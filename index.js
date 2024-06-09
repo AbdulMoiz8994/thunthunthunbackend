@@ -5,16 +5,10 @@ const cors = require("cors");
 const morgan = require("morgan");
 const { connectDb } = require("./src/config/db");
 const router = require("./src/routes/index");
-// const passportStrategy = require("./passport");
 require('dotenv').config();
-const session = require('express-session')
 const app = express();
 
 const server = http.createServer(app);
-
-
-
-
 
 
 app.use(express.json());
@@ -23,12 +17,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("short"));
 
-app.use(session({
-  secret: 'somethingsecretgoeshere',
-  resave: false,
-  saveUninitialized: true,
-  cookie: { secure: false }
-}));
+// app.use(session({
+//   secret: 'somethingsecretgoeshere',
+//   resave: false,
+//   saveUninitialized: true,
+//   cookie: { secure: false }
+// }));
 
 
 
