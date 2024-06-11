@@ -17,12 +17,21 @@ const BlogSchema = new mongoose.Schema({
             url: {
                 type: schemaType.TypeString // Image URL
             },
-            imgDescription: {
-                type: schemaType.TypeString // Description
+            id: {
+                type: schemaType.TypeString,
+                required: true,
+              },
+        }
+    ],
+    video: [
+        {
+            url: {
+                type: schemaType.TypeString // Image URL
             },
-            imgTitle:{
-                type: schemaType.TypeString
-            }
+            id: {
+                type: schemaType.TypeString,
+                required: true,
+              },
         }
     ],
     createdAt: {
