@@ -1,5 +1,7 @@
 const mongoose = require("mongoose");
 const schemaType = require("../../types");
+const CommentSchema =require("../comments").schema;
+
 
 const BlogSchema = new mongoose.Schema({
     title: {
@@ -34,6 +36,7 @@ const BlogSchema = new mongoose.Schema({
               },
         }
     ],
+    comments: [CommentSchema],
     createdAt: {
 
         type: Date,
