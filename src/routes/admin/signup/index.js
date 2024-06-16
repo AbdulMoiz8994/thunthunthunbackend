@@ -19,6 +19,7 @@ const AdminSignup=  async(req, res) =>{
         ...req.body,
         password: await bcrypt.hash(password, bcrypt.genSaltSync(10)),
       };
+      console.log("finalResp",finalResp);
   
       let finalUser = await new Admin(finalResp);
       await finalUser.save();
