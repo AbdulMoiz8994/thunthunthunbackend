@@ -11,17 +11,23 @@ const uploadBlog = async (req, res) => {
       const urls = [];
       const files = req.files;
 
-      // Upload images
-      for (const file of files.image) {
-        const { path } = file;
-        const newPath = await uploader(path, "Image");
-        console.log("newPath", newPath);
-        urls.push(newPath);
-        await fs.unlink(path);
+      // Check if images exist and upload
+      if (files.image) {
+        for (const file of files.image) {
+          const { path } = file;
+          const newPath = await uploader(path, "Image");
+          console.log("newPath", newPath);
+          urls.push(newPath);
+          await fs.unlink(path);
+        }
       }
 
-      // Upload video
-      const videoResult = await uploader(req.files.video[0].path, "Video");
+      // Check if video exists and upload
+      let videoResult = null;
+      if (files.video) {
+        videoResult = await uploader(files.video[0].path, "Video");
+        await fs.unlink(files.video[0].path);
+      }
 
       console.log("urls", urls);
 
@@ -67,5 +73,4 @@ const uploadBlog = async (req, res) => {
     return res.status(500).json({ status: 500, message: err.message });
   }
 };
-
 module.exports = uploadBlog;

@@ -21,7 +21,7 @@ const BlogSchema = new mongoose.Schema({
             },
             id: {
                 type: schemaType.TypeString,
-                required: true,
+                // required: true,
               },
         }
     ],
@@ -32,7 +32,7 @@ const BlogSchema = new mongoose.Schema({
             },
             id: {
                 type: schemaType.TypeString,
-                required: true,
+                // required: true,
               },
         }
     ],

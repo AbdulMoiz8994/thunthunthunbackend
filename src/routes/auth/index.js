@@ -13,7 +13,7 @@ dotenv.config();
 
 router.post("/register", signUpUser);
 router.post("/login", Login);
-router.get("/getLoginDetails",tokenVerification, getUserDetail);
+router.get("/getLoginDetails", getUserDetail);
 router.put("/update-profile",tokenVerification, updateProfile);
 
 

@@ -47,19 +47,11 @@ const Login = async (req, res) => {
 
 const getUserDetail = async (req, res) => {
   try {
-    const getId = await req.userId;
-    console.log(getId);
-
-    let checkUser = await User.findOne({ _id: getId });
+    let checkUser = await User.find().sort({  createdAt: -1 });
     // console.log("checkUser", checkUser);
-    const result = calculateTimeRemaining(checkUser.verificationDate);
     // console.log("result", result);
 
-    return res.status(200).json({
-      remainingTime: result,
-      email: checkUser.email,
-      verified: checkUser.verified,
-    });
+    return res.status(200).json({ data: checkUser });
   } catch (err) {
     return res.status(400).json({ status: 400, message: err.message });
   }
