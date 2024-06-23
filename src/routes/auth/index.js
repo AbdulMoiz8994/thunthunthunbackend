@@ -8,13 +8,14 @@ const { tokenVerification } = require("../../middleware");
 const router=express.Router();
 const passport = require("passport");
 const dotenv = require('dotenv');
+const upload = require("../../multer/index");
 
 dotenv.config();
 
 router.post("/register", signUpUser);
 router.post("/login", Login);
 router.get("/getLoginDetails", getUserDetail);
-router.put("/update-profile",tokenVerification, updateProfile);
+router.put("/update-profile",tokenVerification,upload.single("image"),updateProfile);
 
 
 
