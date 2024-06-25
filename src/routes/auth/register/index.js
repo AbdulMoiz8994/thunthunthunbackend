@@ -51,8 +51,8 @@ const signUpUser= async (req, res) => {
       const mailOptions = {
         from: process.env.email, // sender address
         to: email, // list of receivers
-        subject: ' Welcome to Infulto Congratulations! Your account has been created',
-        text: `Hello ${finalUser.fullName},\n\nYour account has been created successfully. Welcome to Infulto!\n\nBest regards,\nThe Infulto Team`
+        subject: ' Welcome to Influto Congratulations! Your account has been created',
+        text: `Hello ${finalUser.fullName},\n\nYour account has been created successfully. Welcome to Influto!\n\nBest regards,\nThe Influto Team`
       };
   
       transporter.sendMail(mailOptions, (error, info) => {

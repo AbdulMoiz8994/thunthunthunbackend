@@ -5,9 +5,9 @@ const cloudinary = require("../../../multer/cloundnary");
 
 const updateProfile = async (req, res) => {
   try {
-    console.log('req', req.body);
+    // console.log('req', req.body);
     let userId = await User.findOne({ _id: req.userId });
-    console.log('userId', userId, req.userId);
+    // console.log('userId', userId, req.userId);
     if (!userId) {
       return res.status(404).json({ status: 404, message: 'User not Found' });
     }
@@ -25,10 +25,12 @@ const updateProfile = async (req, res) => {
 
         await fs.unlink(path);
         
-        const imageObject = [{
+        const imageObject = [
+          {
           url: newPath.url,
           id: newPath.id,
-        }];
+        }
+      ];
 
         // await fs.unlink(path);
            console.log("imageObject",imageObject);
